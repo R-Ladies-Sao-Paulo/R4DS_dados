@@ -25,7 +25,7 @@ O objetivo deste repositório __não__ é traduzir o livro! Queremos traduzir ap
 
 Será necessário instalar o [pacote {dados}](https://github.com/cienciadedatos/dados):
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 # install.packages("remotes")
 remotes::install_github("cienciadedatos/dados")
 ```
