@@ -35,6 +35,8 @@ remotes::install_github("cienciadedatos/dados")
 
 - Veja um exemplo que já foi traduzido - o capítulo 12: versão [online](https://r4ds-dados.netlify.app/tidy-data.html) e [código .Rmd](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/blob/master/12-tidy-data.Rmd). Veja com cuidado o padrão utilizado!
 
+- No começo dos capítulos, os autores costumam carregar o pacote `tidyverse` usando `library(tidyverse)`. Porém o `tidyverse` é um meta pacote, então carregue apenas os pacotes do `tidyverse` que são utilizados no capítulo (veja o exemplo do capítulo 12)!
+
 - Escolha um capítulo para traduzir ou revisar, olhando o [Projects](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/projects/1) do repositório.
 
 - Decidiu qual em qual capítulo vai colaborar? Peça para que alguma pessoa mantenedora atualize o [Projects](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/projects/1) do repositório.
