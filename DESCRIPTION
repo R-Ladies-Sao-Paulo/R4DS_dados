@@ -2,5 +2,16 @@ Package: R4DS_dados
 Type: Book
 Title: Tradução dos gráficos e tabelas do livro R for Data Science, utilizando as bases de dados do pacote {dados}.
 Version: 0.0.1
-Imports: bookdown
-Remotes: rstudio/bookdown
+Imports: 
+    bookdown,
+    ggplot2,
+    dplyr,
+    tibble,
+    tidyr,
+    stringr,
+    magrittr,
+    tidyverse
+Remotes: 
+    rstudio/bookdown,
+    cienciadedatos/dados
+Encoding: UTF-8
