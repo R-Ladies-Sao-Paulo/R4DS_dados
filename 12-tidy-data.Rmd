@@ -1,0 +1,187 @@
+# 12 - Tidy data
+
+## 12.1 Introduction
+
+Sessão sem códigos.
+
+
+### 12.1.1 Prerequisites
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(dados)
+```
+
+## 12.2 Tidy data
+
+```{r}
+
+tabela1
+
+tabela2
+
+tabela3
+
+# Spread across two tibbles
+
+tabela4a  # cases
+
+tabela4b  # population
+```
+
+```{r}
+# Compute rate per 10,000
+
+tabela1 %>% 
+  mutate(taxa = casos / populacao * 10000)
+```
+
+```{r}
+# Compute cases per year
+
+tabela1 %>% 
+  count(ano, wt = casos)
+```
+
+```{r}
+library(ggplot2)
+ggplot(tabela1, aes(ano, casos)) + 
+  geom_line(aes(group = pais), colour = "grey50") + 
+  geom_point(aes(colour = pais))
+```
+
+## 12.3 Pivoting
+
+### 12.3.1 Longer
+
+
+```{r}
+tabela4a
+```
+
+```{r}
+tabela4a %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "ano", values_to = "casos")
+```
+
+```{r}
+tabela4b %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "ano", values_to = "populacao")
+```
+
+
+```{r}
+tidy4a <- tabela4a %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "ano", values_to = "casos")
+
+tidy4b <- tabela4b %>% 
+  pivot_longer(c(`1999`, `2000`), names_to = "ano", values_to = "populacao")
+
+
+left_join(tidy4a, tidy4b)
+```
+
+
+### 12.3.2 Wider
+
+```{r}
+tabela2
+```
+
+```{r}
+tabela2 %>%
+    pivot_wider(names_from = tipo, values_from = contagem)
+```
+
+## 12.4 Separating and uniting
+
+### 12.4.1 Separate
+
+```{r}
+tabela3
+```
+
+```{r}
+tabela3 %>% 
+  separate(taxa, into = c("casos", "populacao"))
+```
+
+```{r}
+tabela3 %>% 
+  separate(taxa, into = c("casos", "populacao"), sep = "/")
+```
+
+
+```{r}
+tabela3 %>% 
+  separate(taxa, into = c("casos", "populacao"), convert = TRUE)
+```
+
+
+
+
+```{r}
+tabela3 %>% 
+  separate(ano, into = c("seculo", "ano"), sep = 2)
+```
+
+### 12.4.2 Unite
+
+```{r}
+tabela5 %>% 
+  unite(novo, seculo, ano)
+```
+
+```{r}
+tabela5 %>% 
+  unite(novo, seculo, ano, sep = "")
+```
+
+
+
+### 12.5 Missing values
+
+Não usa bases de dados que está no pacote dados.
+
+
+## 12.6 Case Study
+
+```{r}
+dados_oms
+```
+
+```{r}
+
+dados_oms <- dados::dados_oms
+
+who <- tidyr::who
+
+
+dados_oms1 <- dados_oms %>%  #Problema aqui! Porque nossa base tem 1 coluna a menos?
+  pivot_longer(
+    cols = novos_fpp_h014:novos_recaida_m65, 
+    names_to = "chave", 
+    values_to = "casos", 
+    values_drop_na = TRUE
+  )
+dados_oms1
+```
+
+```{r}
+who1 <- who %>% 
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  )
+who1
+```
+
+
+```{r}
+dados_oms1 %>% 
+  count(chave)
+```
+
+[Continuar]
