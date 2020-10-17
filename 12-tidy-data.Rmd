@@ -8,8 +8,12 @@ Sessão sem códigos.
 ### 12.1.1 Prerequisites
 
 ```{r message=FALSE, warning=FALSE}
-library(tidyverse)
+# library(tidyverse)
 library(dados)
+library(ggplot2)
+library(magrittr)
+library(dplyr)
+library(tidyr)
 ```
 
 ## 12.2 Tidy data

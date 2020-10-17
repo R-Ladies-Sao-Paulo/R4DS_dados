@@ -9,8 +9,7 @@ Imports:
     tibble,
     tidyr,
     stringr,
-    magrittr,
-    tidyverse
+    magrittr
 Remotes: 
     rstudio/bookdown,
     cienciadedatos/dados
