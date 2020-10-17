@@ -10,6 +10,7 @@ Imports:
     tidyr,
     stringr,
     remotes,
+    usethis,
     magrittr
 Remotes: 
     rstudio/bookdown,

@@ -20,7 +20,7 @@ O livro [R for Data Science](https://r4ds.had.co.nz/) utiliza muitas bases que e
 
 Portanto, neste repositório buscamos traduzir os __códigos, gráficos e tabelas__ que __utilizem as bases de dados__ que estão no [pacote {dados}](https://github.com/cienciadedatos/dados). É também uma forma de revisar as traduções das bases. Caso encontre algum problema na tradução de alguma base no [pacote {dados}](https://github.com/cienciadedatos/dados), por favor escreva em uma [nova issue](https://github.com/cienciadedatos/dados/issues/new/choose).
 
-O objetivo deste repositório __não__ é traduzir o livro! Queremos traduzir apenas os códigos disponíveis no mesmo, para testar o funcionamento das traduções das bases de dados.
+O objetivo deste repositório __não__ é traduzir o livro! Queremos traduzir apenas os códigos disponíveis no mesmo __e que utilizem as bases do pacote dados__, para verificar as traduções das bases de dados.
 
 
 Será necessário instalar o [pacote {dados}](https://github.com/cienciadedatos/dados):
@@ -30,6 +30,42 @@ Será necessário instalar o [pacote {dados}](https://github.com/cienciadedatos/
 remotes::install_github("cienciadedatos/dados")
 ```
 
+
+## Dicas para contribuir:
+
+- Veja um exemplo que já foi traduzido - o capítulo 12: versão [online](https://r4ds-dados.netlify.app/tidy-data.html) e [código .Rmd](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/blob/master/12-tidy-data.Rmd). Veja com cuidado o padrão utilizado!
+
+- Escolha um capítulo para traduzir ou revisar, olhando o [Projects](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/projects/1) do repositório.
+
+- Decidiu qual em qual capítulo vai colaborar? Peça para que alguma pessoa mantenedora atualize o [Projects](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/projects/1) do repositório.
+
+- Faça o fork e clone o [repositório](https://github.com/R-Ladies-Sao-Paulo/R4DS_dados/). É possível fazer isso utilizando a [interface gráfica do RStudio](https://r-ladies-sao-paulo.github.io/2020-hacktoberfest/slides/git_rstudio/contribuindo_via_RStudio.html) ou com o pacote `usethis`: 
+
+```{r eval=FALSE, include=TRUE}
+usethis::create_from_github(
+  repo_spec = "R-Ladies-Sao-Paulo/R4DS_dados",
+  destdir = "", # edite aqui! escreva o path para o local onde quer que a cópia local seja criada
+  fork = TRUE
+)
+```
+
+- Crie uma nova branch para colaborar:
+
+```{r eval=FALSE, include=TRUE}
+usethis::pr_init("nome_da_branch") #substitua o nome da branch pelo numero-nome do capítulo!
+```
+
+- Crie um novo arquivo `.Rmd` e apague todo o conteúdo! Nesse arquivo, coloque apenas a tradução de códigos que utilizem as bases que estão disponíveis no pacote dados. Códigos que não utilizam essas bases devem ser __ignorados__.
+
+- Apenas contribua com __um capítulo por Pull Request__. Seu PR deve ser composto apenas pelo arquivo com nome no formato `00-nome-cap.Rmd`, sendo que 00 deve representar o número do capítulo no livro.
+
+- Após adicionar as traduções no arquivo `.Rmd`, faça um commit com as mudanças, e utilize a seguinte função:
+
+```{r eval=FALSE, include=TRUE}
+usethis::pr_push()
+```
+
+- Complete o PR na página do GitHub aberta pelo RStudio :)
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
